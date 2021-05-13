@@ -1,0 +1,259 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+
+    tools:context=".ui.activities.RegisterActivity">
+    <!--END-->
+    <androidx.appcompat.widget.Toolbar
+        android:layout_height="?attr/actionBarSize"
+        android:layout_width="match_parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:id="@+id/toolbar_register_activity">
+
+    <com.example.myshop.utils.MSPTextViewBold
+        android:layout_height="match_parent"
+        android:layout_width="match_parent"
+        android:id="@+id/tv_title"
+        android:textSize="@dimen/toolbar_title_text_size"
+        android:textColor="@color/colorPrimary"
+        android:text="@string/create_an_account"
+        android:paddingEnd="0dp"
+        android:paddingStart="@dimen/toolbar_title_paddingStart"
+        android:gravity="center"/>
+
+</androidx.appcompat.widget.Toolbar>
+
+    <ScrollView
+        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/toolbar_register_activity">
+
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_height="wrap_content"
+            android:layout_width="match_parent">
+
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:id="@+id/til_first_name"
+        android:textColorHint="@color/colorSecondaryText"
+        android:hint="@string/hint_first_name"
+        android:layout_marginEnd="16dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginStart="16dp"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+
+    <com.example.myshop.utils.MSPEditText
+        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        android:id="@+id/et_first_name"
+        android:textSize="@dimen/et_textSize"
+        android:textColor="@color/colorPrimary"
+        android:padding="@dimen/et_padding"
+        android:inputType="text"/>
+
+</com.google.android.material.textfield.TextInputLayout>
+
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:id="@+id/til_last_name"
+        app:layout_constraintTop_toBottomOf="@id/til_first_name"
+        android:textColorHint="@color/colorSecondaryText"
+        android:hint="@string/hint_last_name"
+        android:layout_marginEnd="16dp"
+        android:layout_marginTop="25dp"
+        android:layout_marginStart="16dp"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+
+    <com.example.myshop.utils.MSPEditText
+        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        android:id="@+id/et_last_name"
+        android:textSize="@dimen/et_textSize"
+        android:textColor="@color/colorPrimary"
+        android:padding="@dimen/et_padding"
+        android:inputType="text"/>
+
+</com.google.android.material.textfield.TextInputLayout>
+
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:id="@+id/til_email"
+        app:layout_constraintTop_toBottomOf="@id/til_last_name"
+        android:textColorHint="@color/colorSecondaryText"
+        android:hint="@string/et_hint_email_id"
+        android:layout_marginEnd="16dp"
+        android:layout_marginTop="25dp"
+        android:layout_marginStart="16dp"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+
+    <com.example.myshop.utils.MSPEditText
+        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        android:id="@+id/et_email"
+        android:textSize="@dimen/et_textSize"
+        android:textColor="@color/colorPrimary"
+        android:padding="@dimen/et_padding"
+        android:inputType="textEmailAddress"/>
+
+</com.google.android.material.textfield.TextInputLayout>
+
+
+ <com.google.android.material.textfield.TextInputLayout
+     android:layout_height="wrap_content"
+     android:layout_width="match_parent"
+     app:layout_constraintStart_toStartOf="parent"
+     app:layout_constraintEnd_toEndOf="parent"
+     android:id="@+id/til_password"
+     app:layout_constraintTop_toBottomOf="@id/til_email"
+     android:textColorHint="@color/colorSecondaryText"
+     android:hint="@string/et_hint_password"
+     android:layout_marginEnd="16dp"
+     android:layout_marginTop="25dp"
+     android:layout_marginStart="16dp"
+     style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+
+    <com.example.myshop.utils.MSPEditText
+        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        android:id="@+id/et_password"
+        android:textSize="@dimen/et_textSize"
+        android:textColor="@color/colorPrimary"
+        android:padding="@dimen/et_padding"
+        android:inputType="textPassword"/>
+
+</com.google.android.material.textfield.TextInputLayout>
+
+
+    <com.google.android.material.textfield.TextInputLayout
+
+        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:id="@+id/til_confirm_password"
+        app:layout_constraintTop_toBottomOf="@id/til_password"
+        android:textColorHint="@color/colorSecondaryText"
+        android:hint="@string/et_hint_confirm_password"
+        android:layout_marginEnd="16dp"
+        android:layout_marginTop="25dp"
+        android:layout_marginStart="16dp"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+
+    <com.example.myshop.utils.MSPEditText
+        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        android:id="@+id/et_confirm_password"
+        android:textSize="@dimen/et_textSize"
+        android:textColor="@color/colorPrimary"
+        android:padding="@dimen/et_padding"
+        android:inputType="textPassword"/>
+
+</com.google.android.material.textfield.TextInputLayout>
+
+
+    <LinearLayout
+        android:layout_height="wrap_content"
+        android:layout_width="wrap_content"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:id="@+id/ll_terms_and_condition"
+        android:gravity="center_vertical"
+        app:layout_constraintTop_toBottomOf="@id/til_confirm_password"
+        android:layout_marginTop="25dp"
+        android:orientation="horizontal">
+
+    <androidx.appcompat.widget.AppCompatCheckBox
+        android:layout_height="wrap_content"
+        android:layout_width="wrap_content"
+        android:id="@+id/cb_terms_and_condition"
+        tools:checked="false"/>
+
+    <com.example.myshop.utils.MSPTextView
+        android:layout_height="wrap_content"
+        android:layout_width="wrap_content"
+        android:id="@+id/tv_terms_condition"
+        android:textSize="@dimen/txt_terms_and_condition_textSize"
+        android:textColor="@color/colorSecondaryText"
+        android:text="@string/i_agree_to_the_terms_and_condition"
+        android:layout_marginStart="@dimen/txt_terms_condition_marginStart"/>
+
+</LinearLayout>
+
+    <com.example.myshop.utils.MSPButton
+        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:id="@+id/btn_register"
+        android:textSize="@dimen/btn_textSize"
+        android:textColor="@android:color/white"
+        android:text="@string/btn_lbl_register"
+        android:gravity="center"
+        app:layout_constraintTop_toBottomOf="@id/ll_terms_and_condition"
+        android:layout_marginEnd="16dp"
+        android:layout_marginTop="30dp"
+        android:layout_marginStart="16dp"
+        android:paddingBottom="@dimen/btn_padding"
+        android:paddingTop="@dimen/btn_padding"
+        android:foreground="?attr/selectableItemBackground"
+        android:background="@drawable/button_background"
+        android:layout_gravity="center"/>
+
+
+    <LinearLayout
+        android:layout_height="wrap_content"
+        android:layout_width="wrap_content"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:gravity="center_vertical"
+        app:layout_constraintTop_toBottomOf="@id/btn_register"
+        android:layout_marginTop="25dp"
+        android:orientation="horizontal">
+
+    <com.example.myshop.utils.MSPTextView
+        android:layout_height="wrap_content"
+        android:layout_width="wrap_content"
+        android:id="@+id/tv_already_have_an_account"
+        android:textSize="@dimen/lbl_text_view_textSize"
+        android:textColor="@color/colorSecondaryText"
+        android:text="@string/already_have_an_account"
+        android:padding="@dimen/clickable_text_view_padding"/>
+
+    <com.example.myshop.utils.MSPTextViewBold
+        android:layout_height="wrap_content"
+        android:layout_width="wrap_content"
+        android:id="@+id/tv_login"
+        android:textSize="@dimen/lbl_text_view_textSize"
+        android:textColor="@color/colorSecondaryText"
+        android:text="@string/login"
+        android:padding="@dimen/clickable_text_view_padding"
+        android:foreground="?attr/selectableItemBackground"/>
+
+</LinearLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
+
+</ScrollView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
