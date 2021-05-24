@@ -1,6 +1,7 @@
 package com.example.myshop.ui.adapters
 
 import android.content.Context
+import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -8,6 +9,8 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.myshop.R
 import com.example.myshop.models.Product
+import com.example.myshop.ui.activities.ProductDetailsActivity
+import com.example.myshop.utils.Constants
 import com.example.myshop.utils.GlideLoader
 
 class MyDashboardListAdapter(
@@ -31,6 +34,12 @@ class MyDashboardListAdapter(
             holder.itemView.findViewById(R.id.iv_dashboard_item_image))
             holder.itemView.findViewById<TextView>(R.id.tv_dashboard_item_title).text = model.title
             holder.itemView.findViewById<TextView>(R.id.tv_dashboard_item_price).text = "₹${model.price}"
+            holder.itemView.setOnClickListener {
+                val intent = Intent(context, ProductDetailsActivity::class.java)
+                intent.putExtra(Constants.EXTRA_PRODUCT_ID,model.product_id)
+                intent.putExtra(Constants.EXTRA_OWNER_ID,model.user_id)
+                context.startActivity(intent)
+            }
         }
     }
 
