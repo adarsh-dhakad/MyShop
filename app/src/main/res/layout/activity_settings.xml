@@ -71,19 +71,20 @@
             android:layout_height="match_parent"
             android:layout_width="match_parent"
             android:background="@drawable/user_image_background"/>
+        <ImageView
+            android:layout_height="match_parent"
+            android:layout_width="match_parent"
+            android:id="@+id/iv_user_photo"
+            android:src="@drawable/ic_user_placeholder"
+            android:scaleType="fitXY"
+            android:contentDescription="@string/content_description"
+            android:layout_margin="@dimen/settings_user_picture_margin"/>
 
-    <ImageView
-        android:layout_height="match_parent"
-        android:layout_width="match_parent"
-        android:id="@+id/iv_user_photo"
-        android:src="@drawable/ic_user_placeholder"
-        android:scaleType="fitXY"
-        android:contentDescription="@string/content_description"
-        android:layout_margin="@dimen/settings_user_picture_margin"/>
 
 
 
 </FrameLayout>
+        
 
     <com.example.myshop.utils.MSPTextView
         android:layout_height="wrap_content"
@@ -108,7 +109,7 @@
         android:id="@+id/tv_name"
         android:textSize="@dimen/settings_name_textSize"
         android:textColor="@color/colorDarkGrey"
-        tools:text="Denis Panjuta"
+        tools:text="Adarsh Dhakad"
         android:layout_marginTop="@dimen/settings_name_marginTop"
         android:layout_centerHorizontal="true"
         android:layout_below="@id/fl_user_image"/>
@@ -130,7 +131,7 @@
         android:id="@+id/tv_email"
         android:textSize="@dimen/settings_info_textSize"
         android:textColor="@color/colorSecondaryText"
-        tools:text="denis.panjuta@gmail.com"
+        tools:text="adarshdhakad@gmail.com"
         android:layout_marginTop="@dimen/settings_info_marginTop"
         android:layout_centerHorizontal="true"
         android:layout_below="@id/tv_gender"/>

@@ -25,4 +25,8 @@
     <style parent="ThemeOverlay.AppCompat.Dark.ActionBar" name="AppTheme.AppBarOverlay"/>
 
     <style parent="ThemeOverlay.AppCompat.Light" name="AppTheme.PopupOverlay"/>
+
+    <style name="progressBarBlue" parent="@style/Theme.AppCompat">
+        <item name="colorAccent">@color/blue</item>
+    </style>
 </resources>

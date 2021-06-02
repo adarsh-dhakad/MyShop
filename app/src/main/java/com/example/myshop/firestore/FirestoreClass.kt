@@ -6,11 +6,11 @@ import android.content.SharedPreferences
 import android.net.Uri
 import android.util.Log
 import androidx.fragment.app.Fragment
+import com.example.myshop.models.Address
 import com.example.myshop.models.CartItem
 import com.example.myshop.models.Product
 import com.example.myshop.models.User
 import com.example.myshop.ui.activities.*
-import com.example.myshop.ui.adapters.MyCartListAdapter
 import com.example.myshop.ui.fragments.DashboardFragment
 import com.example.myshop.ui.fragments.ProductsFragment
 import com.example.myshop.utils.Constants
@@ -19,9 +19,6 @@ import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.SetOptions
 import com.google.firebase.storage.FirebaseStorage
 import com.google.firebase.storage.StorageReference
-import java.util.*
-import kotlin.collections.ArrayList
-import kotlin.collections.HashMap
 
 class FirestoreClass {
 
@@ -521,6 +518,30 @@ class FirestoreClass {
             }
     }
 
+    fun getAddresseList(activity:AddressListActivity){
+        mFireStore.collection(Constants.ADDRESSES)
+            .whereEqualTo(Constants.USER_ID,getCurrentUserID())
+            .get()
+            .addOnSuccessListener {
+                document ->
+                Log.e(activity.javaClass.simpleName,document.documents.toString())
+                 val addressList:ArrayList<Address> = ArrayList()
+                for (i in document.documents){
+                    val address = i.toObject(Address::class.java)!!
+                    address.id = i.id
+                    addressList.add(address)
+                }
+                activity.successAddressListFromFirestore(addressList)
+            }
+            .addOnFailureListener {
+                e->
+                 activity.hideProgressDialog()
+                Log.e(activity.javaClass.simpleName,
+                    "Error while getting the address list.",
+                e)
+            }
+    }
+
     fun getAllProductList(activity: CartListActivity){
         mFireStore.collection(Constants.PRODUCT)
             .get()
@@ -538,5 +559,42 @@ class FirestoreClass {
                 activity.hideProgressDialog()
                 Log.e("Get Product List","Error while getting all product list.",e)
             }
+    }
+    fun updateAddress(activity: AddEditAddressActivity, addressInfo:Address,id:String){
+        mFireStore.collection(Constants.ADDRESSES)
+            .document(id)
+            .set(addressInfo, SetOptions.merge())
+            .addOnSuccessListener {
+                activity.addUpdateAddressSuccess()
+            }
+            .addOnFailureListener {e->
+                activity.hideProgressDialog()
+                Log.e(
+                    activity.javaClass.simpleName,
+                    "Error while updating the address.",
+                    e
+                )
+            }
+
+    }
+
+    fun addAddress(activity: AddEditAddressActivity, addressInfo: Address) {
+        mFireStore.collection(Constants.ADDRESSES)
+            .document()
+            .set(addressInfo)
+            .addOnSuccessListener {
+              activity.addUpdateAddressSuccess()
+            }
+            .addOnFailureListener { e->
+                activity.hideProgressDialog()
+                Log.e(
+                   activity.javaClass.simpleName,
+                    "Error while adding the address.",
+                      e
+                )
+
+
+            }
+               
     }
 }

@@ -1,6 +1,8 @@
 package com.example.myshop.ui.activities
 
+import android.content.Intent
 import android.os.Bundle
+import android.provider.Settings
 import android.view.View
 import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -10,18 +12,25 @@ import com.example.myshop.firestore.FirestoreClass
 import com.example.myshop.models.CartItem
 import com.example.myshop.models.Product
 import com.example.myshop.ui.adapters.MyCartListAdapter
+import com.example.myshop.utils.Constants
+import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.launch
 
 class CartListActivity : BaseActivity() {
     private lateinit var mCartListItems:ArrayList<CartItem>
     private lateinit var mProductsList:ArrayList<Product>
-   private lateinit var binding:ActivityCartListBinding
+    private lateinit var binding:ActivityCartListBinding
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityCartListBinding.inflate(layoutInflater)
         setContentView(binding.root)
         setupActionBar()
 
-
+       binding.btnCheckout.setOnClickListener {
+          val intent = Intent(this@CartListActivity,AddressListActivity::class.java)
+          intent.putExtra(Constants.EXTRA_SELECT_ADDRESS,true)
+          startActivity(intent)
+       }
     }
 
 
@@ -43,7 +52,9 @@ class CartListActivity : BaseActivity() {
     override fun onResume() {
         super.onResume()
        // getCartItemList()
-        getProductList()
+       GlobalScope.launch {
+           getProductList()
+       }
     }
 
     fun successCartItemList(cartList:ArrayList<CartItem>){
@@ -116,6 +127,7 @@ class CartListActivity : BaseActivity() {
         Toast.makeText(this,resources.getString(R.string.msg_item_removed_successfully),
         Toast.LENGTH_LONG
         ).show()
+
         getCartItemList()
     }
 

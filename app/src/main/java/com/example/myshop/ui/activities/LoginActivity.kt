@@ -34,7 +34,7 @@ class LoginActivity : BaseActivity() , View.OnClickListener {
 
 
         binding.btnLogin.setOnClickListener (this)
-        binding.tvForgotPassword?.setOnClickListener(this)
+        binding.tvForgotPassword.setOnClickListener(this)
         binding.tvRegister.setOnClickListener(this)
 
 

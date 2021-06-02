@@ -40,6 +40,19 @@ object Constants {
     const val CART_ITEMS:String = "cart_items"
     const val PRODUCT_ID:String = "product_id"
     const val CART_QUANTITY:String="cart_quantity"
+
+    const val HOME:String = "Home"
+    const val OFFICE:String = "Office"
+    const val OTHER:String = "Other"
+
+   const val ADDRESSES:String = "addresses"
+
+    const val EXTRA_ADDRESS_DETAILS:String = "AddressDetails"
+
+    const val EXTRA_SELECT_ADDRESS:String = "extra_select_address"
+    const val ADD_ADDRESS_REQUEST_CODE:Int = 121
+    const val EXTRA_SELECTED_ADDRESS:String = "extra_selected_address"
+
     fun showImageChooser(activity: Activity){
         // an intent for launching the image selection of phone storage.
         val galleryIntent = Intent(

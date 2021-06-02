@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name" translatable="false">Online-Shopping-Android-Application</string>
+    <string name="app_name" translatable="false">Mystic mart</string>
     <string name="content_description">image</string>
     <string name="title_login">LOGIN</string>
     <string name="et_hint_email_id">Email ID</string>
@@ -35,8 +35,10 @@ I Agree To The
     <string name="registry_successfull">Thanks for registering</string>
     <!--  <string name="please_wait"><![CDATA[Please Wait&#8230;]]></string> -->
     <string name="please_wait">Please Wait&#8230;</string>
-    <string name="email_send_success">Email send successfully to reset your password !</string>
+    <string name="email_sent_success">Email sent successfully to reset your password !</string>
     <string name="register_success">You are registered successfully.</string>
+    <string name="title_forgot_password">FORGOT PASSWORD?</string>
+    <string name="forgot_password_title_description">Enter your username and e-mail address we\'ll send you a email to reset your password</string>
 
 
     <string name="title_complete_profile">COMPLETE PROFILE</string>
@@ -106,4 +108,40 @@ I Agree To The
     <string name="lbl_out_of_stock">OUT OF STOCK</string>
     <string name="msg_item_removed_successfully">Item removed successfully.</string>
     <string name="msg_for_available_stack">Available stock is %1$s!. You can not add more than stock quantity.</string>
+    <string name="title_address_list">ADDRESS LIST</string>
+    <string name="no_address_found">No Address Found!</string>
+    <string name="lbL_add_address">Add Address</string>
+
+    <string name="title_add_address">ADD ADDRESS</string>
+    <string name="hint_full_name">Full name</string>
+    <string name="hint_phone_number">Phone number</string>
+    <string name="hint_address">Address</string>
+    <string name="hint_zip_code">ZipCode</string>
+    <string name="hint_additional_note">Additional note</string>
+    <string name="hint_other_details">Other details</string>
+    <string name="lbl_home">HOME</string>
+    <string name="lbl_office">OFFICE</string>
+    <string name="lbl_other">OTHER</string>
+
+    <string name="err_msg_please_enter_full_name">Please enter full name.</string>
+    <string name="err_msg_please_enter_phone_number">Please enter phone number.</string>
+    <string name="err_msg_please_enter_address">Please enter address.</string>
+    <string name="err_msg_please_enter_zip_code">Please enter zip-code.</string>
+    <string name="err_msg_please_enter_other_details">Please enter other details.</string>
+    <string name="msg_your_address_added_successfully">Your address was added successfully.</string>
+
+    <string name="title_edit_address">EDIT ADDRESS</string>
+    <string name="btn_lbl_update">UPDATE</string>
+
+    <string name="msg_your_address_updated_successfully">Your address was updated successfully.</string>
+    <string name="msg_your_address_deleted_successfully">Your address was deleted successfully.</string>
+    <string name="title_select_address">SELECT ADDRESS</string>
+
+    <string name="title_checkout">CHECKOUT</string>
+    <string name="checkout_lbl_product_items">Product Items</string>
+    <string name="checkout_lbl_selected_address">Selected Address</string>
+    <string name="checkout_lbl_items_receipt">Items Receipt</string>
+    <string name="lbl_payment_mode">Payment Mode</string>
+    <string name="lbl_cash_on_delivery">Cash On Delivery</string>
+    <string name="btn_lbl_place_order">PLACE ORDER</string>
 </resources>
