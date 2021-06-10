@@ -8,6 +8,7 @@ import android.content.pm.PackageManager
 import android.net.Uri
 import android.os.Bundle
 import android.text.TextUtils
+import android.util.Log
 import android.view.View
 import android.widget.Toast
 import androidx.core.app.ActivityCompat
@@ -22,6 +23,8 @@ import java.io.IOException
 
 class AddProductActivity : BaseActivity() , View.OnClickListener{
     private lateinit var binding: ActivityAddProductBinding
+    private lateinit var mProduct:Product
+    private var checkUploadAdd:Boolean = true
     private var mSelectedImageFileUri: Uri? = null
     private  var mProductImageURL:String? = null
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -29,6 +32,13 @@ class AddProductActivity : BaseActivity() , View.OnClickListener{
         binding = ActivityAddProductBinding.inflate(layoutInflater)
         setContentView(binding.root)
         setupActionBar()
+
+        if (intent.hasExtra(Constants.EXTRA_PRODUCT)){
+            mProduct = intent.getParcelableExtra(Constants.EXTRA_PRODUCT)!!
+            Log.i("Product Id", mProduct.toString())
+            showProductDetails(mProduct)
+        }
+
         binding.ivAddUpdateProduct.setOnClickListener(this@AddProductActivity)
         binding.btnSubmitAddProduct.setOnClickListener(this@AddProductActivity)
 
@@ -39,16 +49,16 @@ class AddProductActivity : BaseActivity() , View.OnClickListener{
             when(v.id){
                 R.id.iv_add_update_product ->{
                     if (ContextCompat.checkSelfPermission(
-                                    this,
-                                    Manifest.permission.READ_EXTERNAL_STORAGE
-                    ) == PackageManager.PERMISSION_GRANTED ){
+                            this,
+                            Manifest.permission.READ_EXTERNAL_STORAGE
+                        ) == PackageManager.PERMISSION_GRANTED ){
                         Constants.showImageChooser(this@AddProductActivity)
-                     }else{
-                         ActivityCompat.requestPermissions(
-                                 this,
-                                 arrayOf(Manifest.permission.READ_EXTERNAL_STORAGE),
-                                 Constants.READ_STORAGE_PERMISSION_CODE
-                         )
+                    }else{
+                        ActivityCompat.requestPermissions(
+                            this,
+                            arrayOf(Manifest.permission.READ_EXTERNAL_STORAGE),
+                            Constants.READ_STORAGE_PERMISSION_CODE
+                        )
                     }
 
                 }
@@ -56,8 +66,8 @@ class AddProductActivity : BaseActivity() , View.OnClickListener{
                 R.id.btn_submit_add_product ->{
                     if (validateProductDetails()){
 
-                        if (mSelectedImageFileUri != null){
-                          uploadProductImage()
+                      if (checkUploadAdd) if (mSelectedImageFileUri != null){
+                            uploadProductImage()
                         }
                     }
                 }
@@ -72,8 +82,8 @@ class AddProductActivity : BaseActivity() , View.OnClickListener{
                 Constants.showImageChooser(this@AddProductActivity)
             } else {
                 Toast.makeText(this@AddProductActivity,
-                        resources.getString(R.string.read_storage_permission_dened), Toast.LENGTH_LONG)
-                        .show()
+                    resources.getString(R.string.read_storage_permission_dened), Toast.LENGTH_LONG)
+                    .show()
             }
         }
 
@@ -86,7 +96,7 @@ class AddProductActivity : BaseActivity() , View.OnClickListener{
                 binding.ivAddUpdateProduct.setImageDrawable(ContextCompat.getDrawable(this@AddProductActivity,R.drawable.ic_vector_edit))
                 try {
 
-                mSelectedImageFileUri = data.data!!;
+                    mSelectedImageFileUri = data.data!!;
                     //    binding.ivUserPhoto.setImageURI(Uri.parse(selectedImageFileUri.toString()))
                     //  binding.ivUserPhoto.setImageURI(selectedImageFileUri)
                     GlideLoader(this).loadUserPicture(mSelectedImageFileUri!!,binding.ivProductImage)
@@ -94,8 +104,8 @@ class AddProductActivity : BaseActivity() , View.OnClickListener{
                 } catch (e: IOException) {
                     e.printStackTrace()
                     Toast.makeText(this,
-                            resources.getString(R.string.image_selection_failed),
-                            Toast.LENGTH_SHORT).show()
+                        resources.getString(R.string.image_selection_failed),
+                        Toast.LENGTH_SHORT).show()
                 }
             }
         }
@@ -123,16 +133,16 @@ class AddProductActivity : BaseActivity() , View.OnClickListener{
 
             TextUtils.isEmpty(binding.etProductDescription.text.toString().trim { it <= ' ' }) -> {
                 showErrorSnackBar(
-                        resources.getString(R.string.err_msg_enter_product_description),
-                        true
+                    resources.getString(R.string.err_msg_enter_product_description),
+                    true
                 )
                 false
             }
 
             TextUtils.isEmpty(binding.etProductQuantity.text.toString().trim { it <= ' ' }) -> {
                 showErrorSnackBar(
-                        resources.getString(R.string.err_msg_enter_product_quantity),
-                        true
+                    resources.getString(R.string.err_msg_enter_product_quantity),
+                    true
                 )
                 false
             }
@@ -152,39 +162,58 @@ class AddProductActivity : BaseActivity() , View.OnClickListener{
             actionBar.setHomeAsUpIndicator(R.drawable.ic_white_color_back_24dp)
         }
 
-       binding.toolbarAddProductActivity.setNavigationOnClickListener { onBackPressed() }
+        binding.toolbarAddProductActivity.setNavigationOnClickListener { onBackPressed() }
     }
     private fun uploadProductDetails(){
-      val username = this.getSharedPreferences(Constants.MYSHOP_PREFENCES,Context.MODE_PRIVATE)
-              .getString(Constants.LOGGED_IN_USERNAME,"")!!
+        val username = this.getSharedPreferences(Constants.MYSHOP_PREFENCES,Context.MODE_PRIVATE)
+            .getString(Constants.LOGGED_IN_USERNAME,"")!!
         val product = Product(
-                FirestoreClass().getCurrentUserID(),
-                username,
-             binding.etProductTitle.text.toString().trim { it <= ' '},
-                binding.etProductPrice.text.toString().trim { it <= ' '},
-                binding.etProductDescription.text.toString().trim { it <= ' '},
-                binding.etProductQuantity.text.toString().trim { it <= ' ' },
-                mProductImageURL,
-                )
+            FirestoreClass().getCurrentUserID(),
+            username,
+            binding.etProductTitle.text.toString().trim { it <= ' '},
+            binding.etProductPrice.text.toString().trim { it <= ' '},
+            binding.etProductDescription.text.toString().trim { it <= ' '},
+            binding.etProductQuantity.text.toString().trim { it <= ' ' },
+            mProductImageURL,
+        )
         FirestoreClass().uploadProductDetails(this,product)
     }
     private  fun uploadProductImage(){
-        showProgressDialod(resources.getString(R.string.please_wait))
+        if(mSelectedImageFileUri.toString() != mProductImageURL.toString()){
+        showProgressDialog(resources.getString(R.string.please_wait))
         FirestoreClass().uploadImageToCloudStorage(this,mSelectedImageFileUri,Constants.PRODUCT_IMAGE)
+            }
     }
     fun productUploadSuccess(){
-            hideProgressDialog()
-       // showErrorSnackBar(,false)
-      Toast.makeText(this@AddProductActivity,resources.getString(R.string.product_uploaded_success_message),Toast.LENGTH_LONG)
-              .show()
-          finish()
+        hideProgressDialog()
+        // showErrorSnackBar(,false)
+        Toast.makeText(this@AddProductActivity,resources.getString(R.string.product_uploaded_success_message),Toast.LENGTH_LONG)
+            .show()
+        finish()
 
     }
     fun imageUploadSuccess(imageURL:String){
-      //    hideProgressDialog()
+        //    hideProgressDialog()
         mProductImageURL = imageURL
-    // showErrorSnackBar("Product image is uploaded successfully,Image URL : $imageURL",false)
+        // showErrorSnackBar("Product image is uploaded successfully,Image URL : $imageURL",false)
 
-         uploadProductDetails()
+        uploadProductDetails()
+    }
+    // product details
+    private fun showProductDetails(product: Product){
+
+        checkUploadAdd = false
+        mSelectedImageFileUri = Uri.parse(product.image)
+        GlideLoader(this@AddProductActivity).loadUserPicture(
+            product.image!!,
+            binding.ivProductImage
+        )
+        binding.apply {
+            etProductTitle.setText("${product.title}")
+            etProductPrice.setText("₹${product.price}")
+            etProductDescription.setText("${product.description}")
+            etProductQuantity.setText("${product.stock_quantity}")
+
+        }
     }
 }

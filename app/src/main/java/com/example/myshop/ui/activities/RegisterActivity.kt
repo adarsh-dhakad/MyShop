@@ -5,6 +5,7 @@ import android.os.Build
 
 import android.os.Bundle
 import android.text.TextUtils
+import android.view.View
 import android.view.WindowInsets
 import android.view.WindowManager
 import android.widget.Button
@@ -48,10 +49,45 @@ class RegisterActivity :BaseActivity() {
             registerUser()
         }
 
+
+     binding.tvTermsCondition.setOnClickListener {
+       binding.tvTermsConditionAndPrivacy.visibility = View.VISIBLE
+       binding.apply {
+           tilFirstName.visibility = View.GONE
+           tilLastName.visibility = View.GONE
+           tilPassword.visibility = View.GONE
+           tilEmail.visibility = View.GONE
+           tilConfirmPassword.visibility = View.GONE
+           llTermsAndCondition.visibility = View.GONE
+           btnRegister.visibility = View.GONE
+           llAlreadyAccountLogin.visibility = View.GONE
+           btnBackToRegisterPage.visibility = View.VISIBLE
+           tvTemp.visibility = View.VISIBLE
+
+       }
+     }
+
+            binding.btnBackToRegisterPage.setOnClickListener {
+                binding.apply {
+                binding.tvTermsConditionAndPrivacy.visibility = View.GONE
+                tilFirstName.visibility = View.VISIBLE
+                tilLastName.visibility = View.VISIBLE
+                tilPassword.visibility = View.VISIBLE
+                tilEmail.visibility = View.VISIBLE
+                tilConfirmPassword.visibility = View.VISIBLE
+                llTermsAndCondition.visibility = View.VISIBLE
+                btnRegister.visibility = View.VISIBLE
+                llAlreadyAccountLogin.visibility = View.VISIBLE
+                btnBackToRegisterPage.visibility = View.GONE
+                tvTemp.visibility = View.GONE
+
+            }
+        }
     }
 
 
     private fun setupActionBar(){
+
     val toolbar_register_activity = findViewById<Toolbar>(R.id.toolbar_register_activity)
         setSupportActionBar(toolbar_register_activity)
         val actionBar = supportActionBar
@@ -117,7 +153,7 @@ class RegisterActivity :BaseActivity() {
 
         if (validateRegisterDetails()){
 
-            showProgressDialod(resources.getString(R.string.please_wait))
+            showProgressDialog(resources.getString(R.string.please_wait))
 
 
 

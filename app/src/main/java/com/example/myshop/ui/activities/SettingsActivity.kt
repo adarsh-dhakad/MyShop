@@ -22,6 +22,7 @@ class SettingsActivity : BaseActivity(), View.OnClickListener {
         setupActionBar()
      binding.btnLogout.setOnClickListener(this)
      binding.tvEdit.setOnClickListener(this)
+     binding.llAddress.setOnClickListener(this)
     }
 
     private fun setupActionBar(){
@@ -35,8 +36,9 @@ class SettingsActivity : BaseActivity(), View.OnClickListener {
         }
         toolbarSettingsActivity.setNavigationOnClickListener{ onBackPressed()}
     }
+
     private fun getUserDetails(){
-        showProgressDialod(resources.getString(R.string.please_wait))
+        showProgressDialog(resources.getString(R.string.please_wait))
         FirestoreClass().getUserDetails(this)
 
     }
@@ -74,6 +76,10 @@ class SettingsActivity : BaseActivity(), View.OnClickListener {
                    startActivity(intent)
                    finish()
                }
+             R.id.ll_address ->{
+                 val intent = Intent(this,AddressListActivity::class.java)
+                 startActivity(intent)
+             }
 
            }
 

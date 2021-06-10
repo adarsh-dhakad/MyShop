@@ -139,7 +139,7 @@ class UserProfileActivity : BaseActivity(), View.OnClickListener {
 
                   if (validateUserProfileDetails()){
 
-                      showProgressDialod(resources.getString(R.string.please_wait))
+                      showProgressDialog(resources.getString(R.string.please_wait))
                       if (mSelectedFileUri != null)
                           FirestoreClass().uploadImageToCloudStorage(this,mSelectedFileUri,Constants.USER_PROFILE_IMAGE)
                       else{
@@ -207,7 +207,7 @@ class UserProfileActivity : BaseActivity(), View.OnClickListener {
         userHashMap[Constants.GENDER]  = gender
         //  showProgressDialod(resources.getString(R.string.please_wait))
         userHashMap[Constants.COMPLETE_PROFILE] = 1
-        FirestoreClass().updateUserProfile(this,userHashMap)
+        FirestoreClass().updateUserProfileData(this,userHashMap)
 
 
     }
