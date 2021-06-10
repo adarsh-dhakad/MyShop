@@ -20,7 +20,7 @@ import com.example.myshop.utils.GlideLoader
 
 class ProductDetailsActivity : BaseActivity() ,View.OnClickListener {
     private var mProductId:String = ""
-    private var productOwnerId: String = ""
+    private var mProductOwnerId: String = ""
     private lateinit var mProductDetails:Product
     private lateinit var binding:ActivityProductDetailsBinding
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -34,11 +34,11 @@ class ProductDetailsActivity : BaseActivity() ,View.OnClickListener {
         //   Log.i("Product Id",mProductId)
        }
         if (intent.hasExtra(Constants.EXTRA_OWNER_ID)){
-            productOwnerId = intent.getStringExtra(Constants.EXTRA_OWNER_ID)!!
+            mProductOwnerId = intent.getStringExtra(Constants.EXTRA_OWNER_ID)!!
             Log.i("User Id",mProductId)
         }
 
-        if (FirestoreClass().getCurrentUserID() == productOwnerId) {
+        if (FirestoreClass().getCurrentUserID() ==  mProductOwnerId) {
             binding.btnAddToCart.visibility = View.GONE
             binding.btnGoToCart.visibility = View.GONE
         } else {
@@ -51,7 +51,7 @@ class ProductDetailsActivity : BaseActivity() ,View.OnClickListener {
 
 
     private fun getProductDetails(){
-        showProgressDialod(resources.getString(R.string.please_wait))
+        showProgressDialog(resources.getString(R.string.please_wait))
         FirestoreClass().getProductDetails(this,mProductId)
     }
 
@@ -97,7 +97,7 @@ class ProductDetailsActivity : BaseActivity() ,View.OnClickListener {
 
     override fun onPrepareOptionsMenu(menu: Menu?): Boolean {
         val item = menu!!.findItem(R.id.action_edit_product)
-       if (productOwnerId  == FirestoreClass().getCurrentUserID()){
+       if ( mProductOwnerId == FirestoreClass().getCurrentUserID()){
            item.isEnabled = true;
            item.icon.alpha = 255;
        }else{
@@ -138,14 +138,15 @@ class ProductDetailsActivity : BaseActivity() ,View.OnClickListener {
     private fun addToCart(){
         val addToCard = CartItem(
             FirestoreClass().getCurrentUserID(),
+            mProductOwnerId,
             mProductId,
-            mProductDetails.title,
-            mProductDetails.price,
-            mProductDetails.image,
+            mProductDetails.title!!,
+            mProductDetails.price!!,
+            mProductDetails.image!!,
             Constants.DEFAULT_CART_QUANTITY,
         )
 
-     showProgressDialod(resources.getString(R.string.please_wait))
+     showProgressDialog(resources.getString(R.string.please_wait))
      FirestoreClass().addCartItems(this,addToCard)
     }
 

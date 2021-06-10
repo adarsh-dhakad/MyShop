@@ -6,8 +6,6 @@ import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.TextView
-import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
 import com.example.myshop.R
 import com.example.myshop.models.Address
@@ -16,7 +14,6 @@ import com.example.myshop.ui.activities.CheckoutActivity
 import com.example.myshop.utils.Constants
 import com.example.myshop.utils.MSPTextView
 import com.example.myshop.utils.MSPTextViewBold
-import com.myshoppal.utils.SwipeToEditCallback
 
 class AddressListAdapter(
     private val context: Context,

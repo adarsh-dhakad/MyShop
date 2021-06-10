@@ -2,7 +2,6 @@ package com.example.myshop.ui.activities
 
 import android.content.Intent
 import android.os.Bundle
-import android.provider.Settings
 import android.view.View
 import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -39,7 +38,7 @@ class CartListActivity : BaseActivity() {
     }
     
     private fun getProductList(){
-        showProgressDialod(resources.getString(R.string.please_wait))
+        showProgressDialog(resources.getString(R.string.please_wait))
         FirestoreClass().getAllProductList(this@CartListActivity)
     }
 
@@ -52,9 +51,9 @@ class CartListActivity : BaseActivity() {
     override fun onResume() {
         super.onResume()
        // getCartItemList()
-       GlobalScope.launch {
+
            getProductList()
-       }
+
     }
 
     fun successCartItemList(cartList:ArrayList<CartItem>){
@@ -63,7 +62,7 @@ class CartListActivity : BaseActivity() {
         for(product in mProductsList){
             for (cartItem in cartList){
                 if (product.product_id == cartItem.product_id){
-                    cartItem.stock_quantity = product.stock_quantity
+                    cartItem.stock_quantity = product.stock_quantity.toString()
 
                     if (product.stock_quantity?.toInt() == 0){
                         cartItem.cart_quantity = product.stock_quantity
@@ -83,7 +82,7 @@ class CartListActivity : BaseActivity() {
               rvCartItemsList.layoutManager = LinearLayoutManager(this@CartListActivity)
               rvCartItemsList.setHasFixedSize(true)
            }
-            val cartListAdapter = MyCartListAdapter(this@CartListActivity,cartList)
+            val cartListAdapter = MyCartListAdapter(this@CartListActivity,cartList,true)
             binding.rvCartItemsList.adapter = cartListAdapter
 
             var subTotal = 0.0

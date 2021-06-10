@@ -78,7 +78,7 @@ class AddEditAddressActivity : BaseActivity(){
         val otherDetails:String = binding.etOtherDetails.text.toString().trim { it <= ' ' }
 
         if(validateData()){
-            showProgressDialod(resources.getString(R.string.please_wait))
+            showProgressDialog(resources.getString(R.string.please_wait))
 
             val addressType:String = when{
                 binding.rbHome.isChecked ->{

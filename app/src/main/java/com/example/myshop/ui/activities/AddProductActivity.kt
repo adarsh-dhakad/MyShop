@@ -180,7 +180,7 @@ class AddProductActivity : BaseActivity() , View.OnClickListener{
     }
     private  fun uploadProductImage(){
         if(mSelectedImageFileUri.toString() != mProductImageURL.toString()){
-        showProgressDialod(resources.getString(R.string.please_wait))
+        showProgressDialog(resources.getString(R.string.please_wait))
         FirestoreClass().uploadImageToCloudStorage(this,mSelectedImageFileUri,Constants.PRODUCT_IMAGE)
             }
     }

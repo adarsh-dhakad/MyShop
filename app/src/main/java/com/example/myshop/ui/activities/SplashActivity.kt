@@ -11,6 +11,7 @@ import android.view.WindowInsets
 import android.view.WindowManager
 import android.widget.TextView
 import com.example.myshop.R
+import com.example.myshop.firestore.FirestoreClass
 
 
 class SplashActivity : AppCompatActivity() {
@@ -18,7 +19,7 @@ class SplashActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_splash)
-// hide statusbar
+// hide status bar
         @Suppress("DEPRECATION")
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R) {
             window.insetsController?.hide(WindowInsets.Type.statusBars())
@@ -44,8 +45,13 @@ class SplashActivity : AppCompatActivity() {
 //                3000   )
         Handler(Looper.getMainLooper()).postDelayed(
                 {
+                    if (FirestoreClass().getCurrentUser() != null){
                     startActivity(Intent(this@SplashActivity,DashboardActivity::class.java))
                     finish()
+                    }else{
+                        startActivity(Intent(this@SplashActivity,LoginActivity::class.java))
+                        finish()
+                    }
                 },
                 3000
         )

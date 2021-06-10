@@ -33,6 +33,7 @@
         android:layout_height="wrap_content"
         android:layout_below="@id/toolbar_checkout_activity"
         android:fillViewport="true"
+        android:layout_above="@+id/ll_checkout_place_order"
         android:scrollbars="none">
 
         <RelativeLayout
@@ -209,6 +210,8 @@
                         android:textAlignment="center"
                         android:textColor="@color/colorSecondaryText"
                         android:textSize="@dimen/checkout_label_value_textSize" />
+
+
                 </LinearLayout>
 
                 <LinearLayout
@@ -263,16 +266,48 @@
                 android:textColor="@color/colorDarkGrey"
                 android:textSize="@dimen/checkout_label_value_textSize" />
 
-            <com.example.myshop.utils.MSPTextViewBold
-                android:id="@+id/tv_payment_mode"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/lbl_cash_on_delivery"
-                android:textAlignment="center"
-                android:textColor="@color/colorDarkGrey"
-                android:textSize="@dimen/checkout_label_value_textSize" />
         </LinearLayout>
+        <RadioGroup
+            android:layout_height="@dimen/profile_radio_button_height"
+            android:layout_width="match_parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:id="@+id/rg_gender"
+            app:layout_constraintTop_toBottomOf="@id/til_mobile_number"
+            android:layout_marginTop="25dp"
+            android:layout_marginEnd="16dp"
+            android:layout_marginStart="16dp"
+            app:layout_constraintBottom_toTopOf="@id/btn_submit"
+            android:orientation="horizontal">
 
+            <com.example.myshop.utils.MSPRadioButton
+                android:layout_height="match_parent"
+                android:layout_width="0dp"
+                android:background="@drawable/drawable_gender_tab_selector"
+                android:id="@+id/rb_online_pay"
+                android:textStyle="bold"
+                android:textColor="@drawable/drawable_gender_tab_text_color_selector"
+                android:text="@string/rb_lbl_online_pay"
+                android:gravity="center"
+                android:layout_marginEnd="@dimen/profile_radio_button_marginStartEnd"
+                android:button="@null"
+                android:layout_weight="1"/>
+
+            <com.example.myshop.utils.MSPRadioButton
+                android:layout_height="match_parent"
+                android:layout_width="0dp"
+                android:checked="true"
+                android:background="@drawable/drawable_gender_tab_selector"
+                android:id="@+id/rb_cash_on_delivery"
+                android:textStyle="bold"
+                android:textColor="@drawable/drawable_gender_tab_text_color_selector"
+                android:text="@string/rb_lbl_cashOnDelivery"
+                android:gravity="center"
+                android:layout_marginStart="@dimen/profile_radio_button_marginStartEnd"
+                android:button="@null"
+                android:layout_weight="1"/>
+
+        </RadioGroup>
         <com.example.myshop.utils.MSPButton
             android:id="@+id/btn_place_order"
             android:layout_width="match_parent"
@@ -294,4 +329,5 @@
             app:layout_constraintTop_toBottomOf="@id/ll_terms_and_condition" />
 
     </LinearLayout>
+
 </RelativeLayout>

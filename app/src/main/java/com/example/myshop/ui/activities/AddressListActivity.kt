@@ -57,8 +57,9 @@ class AddressListActivity : BaseActivity() {
     }
 
     private fun getAddressList(){
-        showProgressDialod(resources.getString(R.string.please_wait))
-        FirestoreClass().getAddresseList(this)
+        showProgressDialog(resources.getString(R.string.please_wait))
+
+        FirestoreClass().getAddressesList(this)
     }
 
     fun successAddressListFromFirestore(addressList:ArrayList<Address>){
@@ -72,7 +73,7 @@ class AddressListActivity : BaseActivity() {
             val addressAdapter = AddressListAdapter(this,addressList,mSelectAddress)
             binding.rvAddressList.adapter = addressAdapter
 
-        if (mSelectAddress) {
+        if (!mSelectAddress) {
 
             val editSwipeHandler = object : SwipeToEditCallback(this) {
                 override fun onSwiped(viewHolder: RecyclerView.ViewHolder, direction: Int) {
@@ -90,7 +91,7 @@ class AddressListActivity : BaseActivity() {
 
             val deleteSwipeHandler = object : SwipeToDeleteCallback(this) {
                 override fun onSwiped(viewHolder: RecyclerView.ViewHolder, direction: Int) {
-                    showProgressDialod(resources.getString(R.string.please_wait))
+                    showProgressDialog(resources.getString(R.string.please_wait))
 
                     addressList[viewHolder.adapterPosition].id?.let {
                         DeleteAddressClass().deleteAddress(
@@ -118,7 +119,7 @@ class AddressListActivity : BaseActivity() {
         resources.getString(R.string.msg_your_address_deleted_successfully),
         Toast.LENGTH_SHORT
         ).show()
-        FirestoreClass().getAddresseList(this)
+        FirestoreClass().getAddressesList(this)
     }
 
     private fun setupActionBar(){

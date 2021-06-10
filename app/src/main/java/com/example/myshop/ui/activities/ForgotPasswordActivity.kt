@@ -26,7 +26,7 @@ class ForgotPasswordActivity : BaseActivity() {
             } else {
 
                 // Show the progress dialog.
-                showProgressDialod(resources.getString(R.string.please_wait))
+                showProgressDialog(resources.getString(R.string.please_wait))
                // This piece of code is used to send the reset password link to the user's email id if the user is registered.
                 FirebaseAuth.getInstance().sendPasswordResetEmail(email)
                     .addOnCompleteListener { task ->

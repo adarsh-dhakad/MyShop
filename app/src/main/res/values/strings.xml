@@ -1,5 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name" translatable="false">Mystic mart</string>
+    <string name="app_name" translatable="false">My Store</string>
     <string name="content_description">image</string>
     <string name="title_login">LOGIN</string>
     <string name="et_hint_email_id">Email ID</string>
@@ -8,8 +9,85 @@
     <string name="btn_lbl_login">Login</string>
     <string name="don_t_have_an_account">Don\'t have an account ?</string>
     <string name="register"><u>Register</u></string>
+    <string name="register_term_and_condition">
+        <b>Welcome to My Store.</b>
+        My Store provide features and other products and services to you. By using the My Store, you agree,
+        on behalf of yourself and all members of your household
+        and others who use any Service under your account, to the following conditions.
 
-    <!--START-->
+        <b>Please read these conditions carefully.</b>
+        <i>We offer a wide range of My Store Services, and sometimes additional terms may apply.</i> >
+       <b>ELECTRONIC COMMUNICATIONS</b>
+    <i>You agree that all agreements, notices, disclosures,
+        and other communications that we provide to you electronically
+        satisfy any legal requirement that such communications be in writing.</i>
+        <b>COPYRIGHT</b>
+        <i>All content included in or made available through any  My Store Service,
+            such as text, graphics, logos, button icons, images, audio clips, digital downloads, data compilations, and software is the property of
+            Mystic or its content suppliers and protected by Indian and international copyright laws.
+            The compilation of all content included in or made available through any My Store Service
+            is the exclusive property of
+            My Store and protected by Indian and international copyright laws.</i>
+        <b>LICENSE AND ACCESS</b>
+        <i>Subject to your compliance with these Conditions of Use and any Service Terms,
+            and your payment of any applicable fees, My Store or its content providers grant you a limited,
+            non-exclusive, non-transferable, non-sublicensable license to access and make personal and
+            non-commercial use of the My Store Services.
+            This license does not include any resale or commercial use of any My Store Service,
+            or its contents; any collection and use of any product listings, descriptions, or prices;
+            any derivative use of any My Store Service or its contents; any downloading,
+            copying, or other use of account information for the benefit of any third party;
+            or any use of data mining, robots, or similar data gathering and extraction tools.
+            All rights not expressly granted to you in these Conditions of Use or any Service Terms are
+            reserved and retained by My Store or its licensors, suppliers, publishers,
+            rightsholders, or other content providers. You may not misuse the
+            My Store Services. You may use the Services only as permitted by law. The licenses granted by
+           My Store terminate if you do not comply with these Conditions of Use or any Service Terms.</i>
+       <b>YOUR ACCOUNT</b>
+        <i>You may need your own  account to use certain Services,
+            and you may be required to be logged in to the account and have a valid payment method
+            associated with it.
+            If there is a problem charging your selected payment method,
+            we may charge any other valid payment method associated with your account.
+           You are responsible for maintaining the confidentiality of your account and password
+            and for restricting access to your account,
+            and you agree to accept responsibility for all activities that occur under
+            your account or password.
+            you can purchase with a credit card or other permitted payment method.
+            If you are under 18, you may use the  Services only with involvement of a parent or guardian.
+            Parents and guardians may create profiles for teenagers in their  Household.
+            Alcohol listings on My Store are intended for adults.
+            You must be at least 21 years of age to purchase alcohol,
+            or use any site functionality related to alcohol.</i>
+        <b>PRICING</b>
+        <i>
+            "List Price" means the suggested retail price of a product as provided by a manufacturer,
+            supplier, or seller.
+            We regularly check List Prices against prices recently found on My Store and other retailers.
+            Certain products may have a "Was Price" displayed, which is determined using recent price history
+            of the product on My Store.
+            With respect to items sold by My Store, we cannot confirm the price of an item until you order.
+            Despite our best efforts, a small number of the items in our catalog may be mispriced.
+            If the correct price of an item sold by My Store is higher than our stated price,
+            we will, at our discretion, either contact you for instructions before shipping or cancel
+            your order and notify you of such cancellation. Other merchants may follow different policies
+            in the event of a mispriced item.
+            We generally do not charge your credit card until after your order has entered the shipping process or,
+            for digital products, until we make the digital product available to you.
+        </i>
+      <b>OUR ADDRESS</b>
+        <i> My Store services guna (m.p.) 473111</i>
+        <h4>Refunds</h4>
+        <i>When you return an item, your refund amount and refund method may vary.
+            You can check the payment method that was refunded and the status of your refund in Your Orders.
+        After the carrier has received your item, it can take up to two weeks for us to receive and process your return.
+        </i>
+        <h4>Contact Us</h4>
+        <u> email :adarshdhakad50@gmail.com
+            <h6>mobile number: +917583035454 </h6>
+        </u>
+
+    </string>
 
 
     <string name="create_an_account">CREATE AN ACCOUNT</string>
@@ -144,4 +222,25 @@ I Agree To The
     <string name="lbl_payment_mode">Payment Mode</string>
     <string name="lbl_cash_on_delivery">Cash On Delivery</string>
     <string name="btn_lbl_place_order">PLACE ORDER</string>
+    <string name="rb_lbl_online_pay">Online Pay</string>
+    <string name="rb_lbl_cashOnDelivery">Cash on delivery</string>
+    <string name="no_orders_placed_yet">No orders placed yet</string>
+
+    <string name="title_my_order_details">MY ORDER DETAILS</string>
+    <string name="order_details_lbl">Order Details</string>
+    <string name="order_details_lbl_order_id">Order ID</string>
+    <string name="order_details_lbl_order_date">Order Date</string>
+    <string name="order_details_lbl_order_status">Order Status</string>
+    <string name="order_status_pending">Pending</string>
+    <string name="order_details_lbl_shipping_address">Shipping Address</string>
+
+    <string name="order_status_in_process">In Process</string>
+    <string name="order_status_delivered">Delivered</string>
+    <string name="order_status_in_pending">In Pending</string>
+
+    <string name="title_sold_products">Sold Products</string>
+    <string name="no_products_sold_out_yet">No products sold out yet!</string>
+
+    <string name="title_sold_product_details">SOLD PRODUCT DETAILS</string>
+
 </resources>

@@ -11,15 +11,16 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.myshop.R
 import com.example.myshop.firestore.FirestoreClass
 import com.example.myshop.models.CartItem
-import com.example.myshop.models.Product
 import com.example.myshop.ui.activities.CartListActivity
 import com.example.myshop.utils.Constants
 import com.example.myshop.utils.GlideLoader
 import com.example.myshop.utils.MSPTextView
 
-class MyCartListAdapter(private val context: Context,
-                        private var list:ArrayList<CartItem>):
-     RecyclerView.Adapter<RecyclerView.ViewHolder>() {
+class MyCartListAdapter(
+    private val context: Context,
+    private var list:ArrayList<CartItem>,
+    private val updateCartItems:Boolean
+    ):RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
         return MyViewHolder(
@@ -47,6 +48,11 @@ class MyCartListAdapter(private val context: Context,
                 holder.itemView.findViewById<ImageButton>(R.id.ib_remove_cart_item).visibility = View.GONE
                 holder.itemView.findViewById<ImageButton>(R.id.ib_add_cart_item).visibility = View.GONE
 
+                if(updateCartItems){
+                  holder.itemView.findViewById<ImageButton>(R.id.ib_delete_cart_item).visibility = View.VISIBLE
+                }else{
+                    holder.itemView.findViewById<ImageButton>(R.id.ib_delete_cart_item).visibility = View.GONE
+                }
                 holder.itemView.findViewById<MSPTextView>(R.id.tv_cart_quantity).text =
                     context.resources.getString(R.string.lbl_out_of_stock)
 
@@ -56,8 +62,16 @@ class MyCartListAdapter(private val context: Context,
                     )
                 )
             }else{
-                holder.itemView.findViewById<ImageButton>(R.id.ib_remove_cart_item).visibility = View.VISIBLE
-                holder.itemView.findViewById<ImageButton>(R.id.ib_add_cart_item).visibility = View.VISIBLE
+                if (updateCartItems){
+                    holder.itemView.findViewById<ImageButton>(R.id.ib_remove_cart_item).visibility = View.VISIBLE
+                    holder.itemView.findViewById<ImageButton>(R.id.ib_add_cart_item).visibility = View.VISIBLE
+                    holder.itemView.findViewById<ImageButton>(R.id.ib_delete_cart_item).visibility = View.VISIBLE
+
+                }else{
+                    holder.itemView.findViewById<ImageButton>(R.id.ib_remove_cart_item).visibility = View.GONE
+                    holder.itemView.findViewById<ImageButton>(R.id.ib_add_cart_item).visibility = View.GONE
+                    holder.itemView.findViewById<ImageButton>(R.id.ib_delete_cart_item).visibility = View.GONE
+                }
 
                 holder.itemView.findViewById<MSPTextView>(R.id.tv_cart_quantity).setTextColor(
                     ContextCompat.getColor(
@@ -68,7 +82,7 @@ class MyCartListAdapter(private val context: Context,
             holder.itemView.findViewById<ImageButton>(R.id.ib_delete_cart_item).setOnClickListener {
                 when(context){
                     is CartListActivity ->{
-                        context.showProgressDialod(context.resources.getString(R.string.please_wait))
+                        context.showProgressDialog(context.resources.getString(R.string.please_wait))
                     }
                 }
                 model.id?.let { it1 -> FirestoreClass(). removeItemFromCart(context, it1) }
@@ -85,7 +99,7 @@ class MyCartListAdapter(private val context: Context,
                         itemHashMap[Constants.CART_QUANTITY] = (cartQuantity!!-1).toString()
 
                         if(context is CartListActivity){
-                            context.showProgressDialod(context.resources.getString(R.string.please_wait))
+                            context.showProgressDialog(context.resources.getString(R.string.please_wait))
                          }
                         model.id?.let { it1 ->
                             FirestoreClass().updateMyCart(context,
@@ -101,7 +115,7 @@ class MyCartListAdapter(private val context: Context,
                itemHashMap[Constants.CART_QUANTITY] = (cartQuantity!!+1).toString()
 
                 if(context is CartListActivity){
-                    context.showProgressDialod(context.resources.getString(R.string.please_wait))
+                    context.showProgressDialog(context.resources.getString(R.string.please_wait))
                 }
                 model.id?.let { it1 ->
                     FirestoreClass().updateMyCart(

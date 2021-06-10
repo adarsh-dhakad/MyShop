@@ -9,9 +9,13 @@ import android.webkit.MimeTypeMap
 
 
 object Constants {
- // collections
+
+
+    // collections
     const val USERS:String = "users"
     const val PRODUCT : String = "products"
+    const val ORDERS:String = "orders"
+    const val SOLD_PRODUCT:String = "sold_product"
 
     const val MYSHOP_PREFENCES:String = "MyShopPrefs"
     const val LOGGED_IN_USERNAME:String = "logged_in_username"
@@ -52,6 +56,11 @@ object Constants {
     const val EXTRA_SELECT_ADDRESS:String = "extra_select_address"
     const val ADD_ADDRESS_REQUEST_CODE:Int = 121
     const val EXTRA_SELECTED_ADDRESS:String = "extra_selected_address"
+
+    const val STOCK_QUANTITY:String = "stock_quantity"
+    const val EXTRA_MY_ORDER_DETAILS:String = "extra_MY_ORDER_DETALS"
+
+    const val EXTRA_SOLD_PRODUCT_DETAILS: String = "extra_sold_product_details"
 
     fun showImageChooser(activity: Activity){
         // an intent for launching the image selection of phone storage.
