@@ -514,6 +514,11 @@ class FirestoreClass {
                 for (i in document.documents){
                    val soldProduct = i.toObject(SoldProduct::class.java)!!
                     soldProduct.id = i.id
+                    Log.i(
+                        fragment.javaClass.simpleName,
+                        "product get success ${soldProduct.title}"
+
+                        )
                     list.add(soldProduct)
                 }
             fragment.successSoldProductsList(list)

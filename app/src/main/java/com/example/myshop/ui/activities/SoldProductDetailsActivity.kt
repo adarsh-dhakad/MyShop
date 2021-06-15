@@ -42,15 +42,14 @@ class SoldProductDetailsActivity : AppCompatActivity() {
      */
     private fun setupActionBar() {
 
-        setSupportActionBar(findViewById(R.id.toolbar_sold_product_details_activity))
+        setSupportActionBar(binding.toolbarSoldProductDetailsActivity)
 
         val actionBar = supportActionBar
         if (actionBar != null) {
             actionBar.setDisplayHomeAsUpEnabled(true)
             actionBar.setHomeAsUpIndicator(R.drawable.ic_white_color_back_24dp)
         }
-
-        findViewById<Toolbar>(R.id.toolbar_sold_product_details_activity).setNavigationOnClickListener { onBackPressed() }
+           binding.toolbarSoldProductDetailsActivity.setNavigationOnClickListener { onBackPressed() }
     }
 
 

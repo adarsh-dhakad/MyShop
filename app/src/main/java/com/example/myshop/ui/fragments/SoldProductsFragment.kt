@@ -1,6 +1,7 @@
 package com.example.myshop.ui.fragments
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -40,7 +41,7 @@ class SoldProductsFragment : BaseFragment(){
     }
 
     fun successSoldProductsList(soldProductsList: ArrayList<SoldProduct>) {
-
+    Log.i("sold product fragment 123","${soldProductsList.get(0).title}")
         // Hide Progress dialog.
         hideProgressDialog()
 
@@ -48,15 +49,16 @@ class SoldProductsFragment : BaseFragment(){
         val tvNoSoldProductsFound = view?.findViewById<TextView>(R.id.tv_no_sold_products_found)
 
         if (soldProductsList.size > 0) {
+
             rvSoldProductItems?.visibility = View.VISIBLE
             tvNoSoldProductsFound?.visibility = View.GONE
 
-            rvSoldProductItems?.layoutManager = LinearLayoutManager(activity)
-            rvSoldProductItems?.setHasFixedSize(true)
+            rvSoldProductItems!!.layoutManager = LinearLayoutManager(activity)
+            rvSoldProductItems.setHasFixedSize(true)
 
             val soldProductsListAdapter =
                 SoldProductsListAdapter(requireActivity(), soldProductsList)
-            rvSoldProductItems?.adapter = soldProductsListAdapter
+            rvSoldProductItems.adapter = soldProductsListAdapter
         } else {
             rvSoldProductItems?.visibility = View.GONE
             tvNoSoldProductsFound?.visibility = View.VISIBLE

@@ -6,7 +6,6 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageButton
-import androidx.fragment.app.FragmentActivity
 import androidx.recyclerview.widget.RecyclerView
 import com.example.myshop.R
 import com.example.myshop.models.SoldProduct
@@ -21,7 +20,8 @@ class SoldProductsListAdapter(
     private var list: ArrayList<SoldProduct>) : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
-       return  MyViewHolder(
+
+        return  MyViewHolder(
            LayoutInflater.from(context).inflate(
                R.layout.item_list_layout,
                parent,
@@ -54,7 +54,7 @@ class SoldProductsListAdapter(
     }
 
     override fun getItemCount(): Int {
-        TODO("Not yet implemented")
+       return  list.size
     }
 
     /**

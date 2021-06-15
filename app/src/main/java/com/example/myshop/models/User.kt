@@ -5,7 +5,7 @@ import android.os.Parcelable
 
 
 
-class User(
+data class User(
         // this is data class
         val uid: String? =  "",
         val firstName: String? =  "",
