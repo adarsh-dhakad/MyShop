@@ -51,10 +51,11 @@
                 android:textIsSelectable="true"
                 android:textSize="@dimen/et_textSize"
                 android:textStyle="normal"
-                android:visibility="visible"
+                android:visibility="gone"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toTopOf="@id/tv_temp"
                 app:layout_goneMarginLeft="@dimen/address_details_marginTop" />
 
             <com.google.android.material.textfield.TextInputLayout
